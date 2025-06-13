@@ -1,0 +1,19 @@
+.voltar{
+  display: flex;
+  cursor: pointer;
+  padding-top: 20px;
+  padding-right: 400px;
+  padding-bottom: 36px;
+  text-decoration: none;
+}
+
+.BackButton img {
+  margin-right: 8px;
+}
+
+.backText {
+  font-size: 16px;
+  color: #5061FC;
+  font-family: 'Sora', sans-serif;
+  font-weight: 600;
+}
