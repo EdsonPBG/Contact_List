@@ -1,35 +1,36 @@
 // import React from 'react';
+import SelectForm from "../../SelectForm/selectForm";
 import styleHome from "../home.module.css";
-
-interface Contact {
-    name: string;
-    telefone: string;
-    email: string;
-}
+import type { Contact } from "../../../Types/types"
 
 interface ContactItemProps {
     contact: Contact;
-    onEdit: (name: string) => void;
-    onDelete: (name: string) => void;
+    onEdit: (id: string) => void;
+    onDelete: (id: string) => void;
 }
 
 export function ContactItems ({ contact, onEdit, onDelete }: ContactItemProps) {
   return (
-   <li key={contact.name} className={styleHome.contactItem}>
-        <div className={styleHome.contactInfo}>
-            <h3 className={styleHome.contactName}>{contact.name}</h3>
-            <p className={styleHome.contactTelefone}>Telefone {contact.telefone}</p>
-            {contact.email && <p className={styleHome.contactEmail}>Email: {contact.email}</p>}
-        </div>
-        <div className={styleHome.contactActions}>
-            <button onClick={() => onEdit(contact.name)} className={styleHome.actionButtonEdit}>
-                Editar
-            </button>
-            <button onClick={() => onDelete(contact.name)} className={styleHome.actionButtonDelete}>
-                Excluir
-            </button>
-        </div>
-   </li> 
+  <li className={styleHome.contactItem}>
+      <div className={styleHome.contactInfo}>
+        <p className={styleHome.contactName}>
+          {contact.name}
+          {/* --- AQUI ESTÁ A MUDANÇA PARA EXIBIR A REDE SOCIAL --- */}
+          {contact.redeSocial && ( // Renderiza apenas se 'redeSocial' existir
+            <span className={styleHome.contactSocial}>
+              ({contact.redeSocial})
+            </span>
+          )}
+        </p>
+        <p className={styleHome.contactPhone}>Telefone: {contact.telefone}</p>
+        {contact.email && <p className={styleHome.contactEmail}>Email: {contact.email}</p>}
+         
+      </div>
+      <div className={styleHome.contactActions}>
+        <button onClick={() => onEdit(contact.id)} className={styleHome.editButton}>Editar</button>
+        <button onClick={() => onDelete(contact.id)} className={styleHome.deleteButton}>Excluir</button>
+      </div>
+    </li>
   );
 }
 

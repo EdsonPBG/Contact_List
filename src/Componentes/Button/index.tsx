@@ -4,6 +4,7 @@ import style from "./style.module.css"
 
 interface Props {
     children: React.ReactNode;
+    disabled?: boolean;
 };
 
 export default function Button ({children}: Props) {
